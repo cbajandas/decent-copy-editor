@@ -166,9 +166,7 @@ function App() {
             <h1>Decent Copy Editor</h1>
             <p>Standalone desktop editor for Decent DAO language files</p>
           </div>
-          <div className="electron-indicator">
-            <span className="electron-badge">Desktop App</span>
-          </div>
+
         </div>
         
         <div className="project-selector">
@@ -203,9 +201,7 @@ function App() {
           <h1>Decent Copy Editor</h1>
           <p>Editing language files for your Decent DAO project</p>
         </div>
-        <div className="electron-indicator">
-          <span className="electron-badge">Desktop App</span>
-        </div>
+
       </div>
 
       <div className="project-info">
@@ -303,9 +299,9 @@ function App() {
             <table className="table">
               <thead>
                 <tr>
+                  <th style={{ width: '25%' }}>File</th>
                   <th style={{ width: '25%' }}>Key</th>
                   <th style={{ width: '50%' }}>Value</th>
-                  <th style={{ width: '25%' }}>File</th>
                 </tr>
               </thead>
               <tbody>
@@ -316,6 +312,7 @@ function App() {
 
                   return (
                     <tr key={entry.id}>
+                      <td className="file-cell">{entry.fileName}</td>
                       <td className="key-cell">{entry.key}</td>
                       <td className="value-cell">
                         <textarea
@@ -325,7 +322,6 @@ function App() {
                           rows={Math.max(2, Math.ceil(currentValue.length / 50))}
                         />
                       </td>
-                      <td className="file-cell">{entry.fileName}</td>
                     </tr>
                   );
                 })}
