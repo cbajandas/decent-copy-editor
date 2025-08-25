@@ -10,16 +10,28 @@ A standalone desktop application for editing language files in Decent DAO projec
 - 💾 Direct file editing with real-time preview
 - 🎯 Standalone - no need to integrate into your main project
 
-## Installation
+## Download
 
-1. Download the latest release for your platform:
-   - **Windows**: `decent-copy-editor-setup.exe`
-   - **macOS**: `decent-copy-editor.dmg`
-   - **Linux**: `decent-copy-editor.AppImage`
+🎉 **Ready-to-use executables are available!** No need to build from source.
 
-2. Install and run the application
+### Download Latest Release
 
-3. On first launch, select your Decent DAO project folder when prompted
+Visit the [Releases page](https://github.com/cbajandas/decent-copy-editor/releases) and download the appropriate file for your platform:
+
+- **Windows**: `Decent-Copy-Editor-Setup-x.x.x.exe` - Windows installer
+- **macOS**: `Decent-Copy-Editor-x.x.x.dmg` - macOS disk image  
+- **Linux**: `Decent-Copy-Editor-x.x.x.AppImage` - Portable Linux application
+
+### Installation
+
+1. Download the file for your operating system
+2. **Windows**: Run the `.exe` installer and follow the setup wizard
+3. **macOS**: Open the `.dmg` file and drag the app to your Applications folder
+4. **Linux**: Make the `.AppImage` file executable (`chmod +x`) and run it directly
+
+### First Launch
+
+On first launch, the application will prompt you to select your Decent DAO project folder.
 
 ## Usage
 
@@ -45,25 +57,31 @@ your-decent-project/
 
 ## Development
 
+## Building from Source
+
+If you prefer to build the application yourself or want to contribute:
+
 ```bash
+# Clone the repository
+git clone https://github.com/cbajandas/decent-copy-editor.git
+cd decent-copy-editor
+
 # Install dependencies
 npm install
 
 # Run in development mode
 npm run dev
 
-# Build for distribution
+# Build for distribution (creates executable)
 npm run dist
+
+# Platform-specific builds
+npm run dist:win    # Windows
+npm run dist:mac    # macOS  
+npm run dist:linux  # Linux
 ```
 
-## Building from Source
-
-```bash
-# Clone the repository
-git clone https://github.com/decentdao/decent-copy-editor.git
-cd decent-copy-editor
-
-# Install dependencies
+The built executables will be available in the `release/` folder.
 npm install
 
 # Build for your platform
