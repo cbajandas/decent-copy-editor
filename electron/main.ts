@@ -89,12 +89,30 @@ async function readLanguageFile(localesPath: string, fileName: string): Promise<
   }
 }
 
-// Write a language file
+// Write a language file while preserving trailing newlines
 async function writeLanguageFile(localesPath: string, fileName: string, data: any): Promise<void> {
   try {
     const filePath = path.join(localesPath, `${fileName}.json`);
-    const content = JSON.stringify(data, null, 2);
-    await fs.writeFile(filePath, content, 'utf-8');
+    
+    // Check if original file had trailing newline
+    let hasTrailingNewline = false;
+    try {
+      const originalContent = await fs.readFile(filePath, 'utf-8');
+      hasTrailingNewline = originalContent.endsWith('\n');
+    } catch (error) {
+      // File doesn't exist, that's fine
+    }
+    
+    // Format the content with proper indentation
+    let formattedContent = JSON.stringify(data, null, 2);
+    
+    // Preserve trailing newline if the original had one
+    if (hasTrailingNewline) {
+      formattedContent += '\n';
+    }
+    
+    await fs.writeFile(filePath, formattedContent, 'utf-8');
+    console.log(`Saved: ${fileName}.json`);
   } catch (error) {
     console.error(`Error writing language file ${fileName}:`, error);
     throw error;

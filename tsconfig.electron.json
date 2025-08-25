@@ -11,7 +11,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "outDir": "./dist/electron",
-    "rootDir": "./electron"
+    "rootDir": "./electron",
+    "types": ["node", "electron"]
   },
   "include": ["electron/**/*"],
   "exclude": ["node_modules", "dist"]
