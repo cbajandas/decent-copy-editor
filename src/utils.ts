@@ -150,16 +150,19 @@ export function filterEntries(
 
 /**
  * Applies pending changes to the original language files data structure
+ * Returns only the files that have actual changes
  */
 export function applyChangesToFiles(
   files: LanguageFile[],
   changes: Map<string, EditChange>
 ): LanguageFile[] {
   if (changes.size === 0) {
-    return files;
+    return [];
   }
 
-  return files.map(file => {
+  const modifiedFiles: LanguageFile[] = [];
+
+  files.forEach(file => {
     const updatedData = { ...file.data };
     let hasChanges = false;
 
@@ -173,8 +176,13 @@ export function applyChangesToFiles(
       }
     });
 
-    return hasChanges ? { ...file, data: updatedData } : file;
+    // Only include files that actually have changes
+    if (hasChanges) {
+      modifiedFiles.push({ ...file, data: updatedData });
+    }
   });
+
+  return modifiedFiles;
 }
 
 /**

@@ -134,12 +134,20 @@ function App() {
       setSaving(true);
       setError(null);
 
-      // Apply changes to files and save
-      const updatedFiles = applyChangesToFiles(languageFiles, changes);
-      await saveUpdatedFiles(updatedFiles);
+      // Get only the files that have changes
+      const modifiedFiles = applyChangesToFiles(languageFiles, changes);
+      
+      // Save only the modified files
+      await saveUpdatedFiles(modifiedFiles);
 
-      // Update state with saved files
-      setLanguageFiles(updatedFiles);
+      // Update the state by merging modified files back into the original array
+      setLanguageFiles(prevFiles => 
+        prevFiles.map(file => {
+          const modifiedFile = modifiedFiles.find(mod => mod.fileName === file.fileName);
+          return modifiedFile || file;
+        })
+      );
+      
       setChanges(new Map());
     } catch (err) {
       setError('Failed to save changes. Please try again.');
