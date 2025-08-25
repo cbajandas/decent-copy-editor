@@ -1,6 +1,6 @@
 {
   "name": "decent-copy-editor",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Standalone copy editor for Decent DAO language files",
   "main": "dist/electron/main.js",
   "homepage": "./",
