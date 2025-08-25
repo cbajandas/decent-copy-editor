@@ -1,95 +1,94 @@
 # Decent Copy Editor
 
-A standalone desktop application for editing language files in Decent DAO projects.
+A standalone desktop application for editing Decent DAO project language files with a clean, intuitive interface.
 
 ## Features
 
-- 📝 Edit English language files with a clean, table-based interface
-- 🔍 Search and filter across all language entries
-- 📁 Select any Decent DAO project folder on your machine
-- 💾 Direct file editing with real-time preview
-- 🎯 Standalone - no need to integrate into your main project
+- **Project Detection**: Automatically validates Decent DAO project structure
+- **Live Search**: Find keys and values across all language files
+- **File Filtering**: Focus on specific translation files
+- **Visual Feedback**: Modified entries highlighted for easy tracking
+- **Auto-save**: Changes written directly to JSON files
+- **Cross-platform**: Windows, macOS, and Linux support
 
-## Download
+## Quick Start
 
-🎉 **Ready-to-use executables are available!** No need to build from source.
+### For Users
 
-### Download Latest Release
+1. **Download** the latest release for your platform:
+   - Windows: `decent-copy-editor-setup.exe`
+   - macOS: `decent-copy-editor.dmg`
+   - Linux: `decent-copy-editor.AppImage`
 
-Visit the [Releases page](https://github.com/cbajandas/decent-copy-editor/releases) and download the appropriate file for your platform:
+2. **Install and Launch**
+   - Windows: Run the installer
+   - macOS: Drag to Applications folder
+   - Linux: Make executable and run
 
-- **Windows**: `Decent-Copy-Editor-Setup-x.x.x.exe` - Windows installer
-- **macOS**: `Decent-Copy-Editor-x.x.x.dmg` - macOS disk image  
-- **Linux**: `Decent-Copy-Editor-x.x.x.AppImage` - Portable Linux application
+3. **Setup Project**
+   - Click "Select Project Folder"
+   - Choose your Decent DAO project root (containing `public/locales/en/`)
+   - Start editing!
 
-### Installation
+### For Developers
 
-1. Download the file for your operating system
-2. **Windows**: Run the `.exe` installer and follow the setup wizard
-3. **macOS**: Open the `.dmg` file and drag the app to your Applications folder
-4. **Linux**: Make the `.AppImage` file executable (`chmod +x`) and run it directly
+```bash
+# Clone and setup
+git clone <repository-url> decent-copy-editor
+cd decent-copy-editor
+npm install
 
-### First Launch
+# Development
+npm run dev
 
-On first launch, the application will prompt you to select your Decent DAO project folder.
-
-## Usage
-
-1. **Select Project**: Choose the root folder of your Decent DAO project
-2. **Browse Files**: View all language files in a unified table
-3. **Search & Filter**: Use the search bar to find specific text or keys
-4. **Edit**: Click any cell to edit the English text
-5. **Save**: Changes are automatically saved to the original files
-
-## Project Requirements
-
-The application expects your project to have the following structure:
-```
-your-decent-project/
-├── public/
-│   └── locales/
-│       └── en/
-│           ├── common.json
-│           ├── actions.json
-│           └── ...other language files
-└── package.json
+# Build distributables
+npm run build-dist
 ```
 
 ## Development
 
-## Building from Source
+### Prerequisites
+- Node.js 18+
+- npm or yarn
 
-If you prefer to build the application yourself or want to contribute:
+### Project Structure
+```
+decent-copy-editor/
+├── electron/          # Main process (main.ts, preload.ts)
+├── src/              # React frontend (App.tsx, utils.ts, etc.)
+├── scripts/          # Build scripts
+└── release/          # Generated distributables
+```
 
+### Build Commands
 ```bash
-# Clone the repository
-git clone https://github.com/cbajandas/decent-copy-editor.git
-cd decent-copy-editor
-
-# Install dependencies
-npm install
-
-# Run in development mode
-npm run dev
-
-# Build for distribution (creates executable)
-npm run dist
-
-# Platform-specific builds
-npm run dist:win    # Windows
-npm run dist:mac    # macOS  
-npm run dist:linux  # Linux
+npm run dev           # Development server
+npm run build         # Build frontend
+npm run build-dist    # Create distributables for current platform
+npm run dist:win      # Windows installer
+npm run dist:mac      # macOS disk image  
+npm run dist:linux    # Linux AppImage
 ```
 
-The built executables will be available in the `release/` folder.
-npm install
+## Troubleshooting
 
-# Build for your platform
-npm run dist:win    # Windows
-npm run dist:mac    # macOS  
-npm run dist:linux  # Linux
-```
+**"Not a valid Decent DAO project"**
+- Ensure folder contains `public/locales/en/` directory
+
+**Build issues**
+- Clear dependencies: `rm -rf node_modules && npm install`
+- Update Node.js to latest LTS
+
+**File loading errors**
+- Check file permissions and JSON validity
+
+## Contributing
+
+1. Fork the repository
+2. Create feature branch
+3. Test with multiple Decent DAO projects
+4. Submit pull request
 
 ## License
 
-MIT License - see LICENSE file for details
+MIT License
