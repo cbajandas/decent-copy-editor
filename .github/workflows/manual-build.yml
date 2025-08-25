@@ -1,5 +1,7 @@
 name: Manual Build
 
+# This workflow only runs when manually triggered from the GitHub Actions UI
+# It does NOT run automatically on pushes, tags, or any other events
 on:
   workflow_dispatch:
     inputs:

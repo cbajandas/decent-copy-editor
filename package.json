@@ -45,6 +45,7 @@
   "build": {
     "appId": "com.decentdao.copy-editor",
     "productName": "Decent Copy Editor",
+    "publish": null,
     "directories": {
       "output": "release"
     },

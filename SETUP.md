@@ -70,7 +70,6 @@ decent-copy-editor/
 │   ├── icons.tsx      # SVG icon components
 │   └── styles.css     # Styling
 ├── scripts/           # Build and utility scripts
-├── assets/            # Application icons and resources
 ├── dist/              # Built frontend (generated)
 ├── release/           # Distribution packages (generated)
 └── package.json       # Project configuration
