@@ -137,11 +137,7 @@ export function filterEntries(
     // Filter by search term if specified
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
-      return (
-        entry.key.toLowerCase().includes(term) ||
-        entry.value.toLowerCase().includes(term) ||
-        entry.fileName.toLowerCase().includes(term)
-      );
+      return entry.value.toLowerCase().includes(term);
     }
     
     return true;
